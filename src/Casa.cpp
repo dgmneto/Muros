@@ -1,5 +1,13 @@
 #include "Casa.h"
 
+Casa::Casa(int i = 0, int j = 0, int distanciOrg = 0, int distanciaDest = 0)
+{
+    this->i = i;
+    this->j = j;
+    this->distanciaOrg = distanciaOrg;
+    this->distanciaDest = distanciaDest;
+}
+
 int Casa::getI()
 {
     return i;
@@ -20,6 +28,16 @@ int Casa::getJ()
 void Casa::setJ(int j)
 {
     this->j = j;
+}
+
+int Casa::getCusto()
+{
+    return custo;
+}
+
+void Casa::setCusto(int custo)
+{
+    this->Custo = Custo;
 }
 
 int Casa::getDistanciaOrg()

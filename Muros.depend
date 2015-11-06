@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1446851532 source:/Users/dgmneto/Documents/Projetos/ProjetoFinais/Muros/Muros/src/Casa.cpp
+	"Casa.h"
+
+1446851532 /Users/dgmneto/Documents/Projetos/ProjetoFinais/Muros/Muros/include/Casa.h
+
+1446852648 source:/Users/dgmneto/Documents/Projetos/ProjetoFinais/Muros/Muros/main.cpp
+	<iostream>
+
