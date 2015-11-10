@@ -32,6 +32,7 @@ class Casa
         bool isInserido();
         void setInserido(bool inserido);
         char getCaractere();
+        void setCaractere(char caractere);
         static void inserirOrdenado(Casa **casas, int inicio, int fim, Casa *casa)
         {
             int i = inicio;
@@ -53,6 +54,7 @@ class Casa
             for(int j = fim; j > i; j--)
             {
                 casas[j] = casas[j - 1];
+                casas[j]->index = j;
             }
             casas[i] = casa;
             casa->index = i;

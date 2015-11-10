@@ -100,3 +100,8 @@ char Casa::getCaractere()
 {
     return caractere;
 }
+
+void Casa::setCaractere(char caractere)
+{
+    this->caractere = caractere;
+}

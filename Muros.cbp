@@ -35,10 +35,9 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Casa.h" />
-		<Unit filename="include/vectorCasa.h" />
+		<Unit filename="input.txt" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Casa.cpp" />
-		<Unit filename="src/vectorCasa.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

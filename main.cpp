@@ -79,14 +79,12 @@ int main()
             atual_1->setCusto(atual->getCusto() + atual_1->getCustoLocal());
             if(!atual_1->isInserido())
             {
-                cout << "oi1\n";
                 Casa::inserirOrdenado(casas, i + 1, qtd_casas, atual_1);
                 atual_1->setInserido(true);
                 qtd_casas += 1;
             }
             else
             {
-                cout << "oi2\n";
                 Casa::reordenarUnico(casas, i + 1, atual_1);
             }
         }
@@ -98,12 +96,20 @@ int main()
     Casa *atual = fim;
     do
     {
-        if(atual->getCusto())
+        if(atual->getCustoLocal())
         {
             cout << atual->getI() << " " << atual->getJ() << "\n";
+            mapa[atual->getI()][atual->getJ()]->setCaractere('_');
         }
         atual = atual->getAnterior();
     } while(atual != 0);
+
+    for(i = 0; i < n; i++)
+    {
+        for(j = 0; j < m; j++)
+            printf("%c", mapa[i][j]->getCaractere());
+        printf("\n");
+    }
 
     return 0;
 }
