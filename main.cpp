@@ -99,17 +99,18 @@ int main()
         if(atual->getCustoLocal())
         {
             cout << atual->getI() << " " << atual->getJ() << "\n";
-            mapa[atual->getI()][atual->getJ()]->setCaractere('_');
+            //mapa[atual->getI()][atual->getJ()]->setCaractere('*');
         }
+        //mapa[atual->getI()][atual->getJ()]->setCaractere('_');
         atual = atual->getAnterior();
     } while(atual != 0);
-
+    /*
     for(i = 0; i < n; i++)
     {
         for(j = 0; j < m; j++)
             printf("%c", mapa[i][j]->getCaractere());
         printf("\n");
     }
-
+    */
     return 0;
 }
