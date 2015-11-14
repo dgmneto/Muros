@@ -1,6 +1,8 @@
 #ifndef CASA_H
 #define CASA_H
 
+#include <iostream>
+
 
 class Casa
 {
@@ -35,8 +37,28 @@ class Casa
         void setCaractere(char caractere);
         static void inserirOrdenado(Casa **casas, int inicio, int fim, Casa *casa)
         {
-            int i = inicio;
-            for(; i < fim; i++)
+            int i;
+            int a, b, n;
+            if(inicio != fim)
+                for(a = inicio, b = fim, n = b - a, i = (a + b)/2 - ((n & 1) ? 1 : 0); n != 1; i = (a + b)/2, n = b - a)
+                {
+                    if(casas[i]->getCusto() > casa->getCusto())
+                        b = i + 1;
+                    else if(casas[i]->getCusto() == casa->getCusto())
+                    {
+                        if(casas[i]->getDistanciaDest() >= casa->getDistanciaDest())
+                            b = i + 1;
+                        else
+                            a = i + 1;
+                    }
+                    else
+                        a = i + 1;
+
+                }
+            else
+                i = inicio;
+            /*
+            for(i = inicio; i < fim; i++)
             {
                 if(casas[i]->getCusto() == casa->getCusto())
                 {
@@ -50,6 +72,7 @@ class Casa
                     break;
                 }
             }
+            */
 
             for(int j = fim; j > i; j--)
             {
