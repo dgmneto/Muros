@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <Casa.h>
 
 #define ORIGEM 'S'
@@ -116,7 +117,11 @@ void imprimirDados()
 
 int main()
 {
-    freopen("entrada.in", "r", stdin);
+    string nomeMapa, extencao = ".txt";
+    ifstream fileInput ("entrada.in");
+    getline(fileInput, nomeMapa);
+    nomeMapa = nomeMapa + extencao;
+    freopen(nomeMapa.c_str(), "r", stdin);
     freopen("berinjela.out", "w", stdout);
 
     lerDados();
