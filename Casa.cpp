@@ -1,6 +1,6 @@
 #include "Casa.h"
 
-Casa::Casa(Casa *anterior, int i, int j, int distanciaDest, int custo, int custoLocal, char caractere)
+Casa::Casa(Casa *anterior, int i, int j, int distanciaDest, int custo, int custoLocal)
 {
     this->anterior = anterior;
     this->i = i;
@@ -11,7 +11,6 @@ Casa::Casa(Casa *anterior, int i, int j, int distanciaDest, int custo, int custo
     this->processado = false;
     this->inserido = false;
     this->index = -1;
-    this->caractere = caractere;
 }
 
 Casa *Casa::getAnterior()
@@ -94,14 +93,4 @@ bool Casa::isInserido()
 void Casa::setInserido(bool inserido)
 {
     this->inserido = inserido;
-}
-
-char Casa::getCaractere()
-{
-    return caractere;
-}
-
-void Casa::setCaractere(char caractere)
-{
-    this->caractere = caractere;
 }

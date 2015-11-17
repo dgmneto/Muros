@@ -14,15 +14,17 @@ const int direcoes[][2] = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
 
 int n, m;
 
-Casa *fim;
+Casa ***mapa, **casas, *fim;
+int qtd_casas = 0;
 
-int main()
+void lerDados()
 {
-    int i;
-    cin >> n >> m;
-    Casa ***mapa = new Casa **[n];
-    Casa **casas = new Casa *[n*m + 1];
-    int qtd_casas = 0, j;
+
+    cin >> n;
+    cin >> m;
+    mapa = new Casa **[n];
+    casas = new Casa *[n*m + 1];
+    int i, j;
     for(i = 0; i < n; i++)
     {
         mapa[i] = new Casa *[m];
@@ -33,37 +35,36 @@ int main()
             Casa *atual;
             if(a == DESTINO)
             {
-                atual = fim = new Casa(0, i, j, 0, -1, 0, a);
+                atual = new Casa(0, i, j, 0, -1, 0);
+                fim = atual;
             }
             else if(a == ORIGEM)
             {
-                atual = casas[0] = new Casa(0, i, j, 0, 0, 0, a);
-                casas[0]->setInserido(true);
+                atual = new Casa(0, i, j, 0, 0, 0);
+                atual->setInserido(true);
+                casas[0] = atual;
                 qtd_casas += 1;
             }
             else if(a == MURO)
             {
-                atual = new Casa(0, i, j, 0, -1, 1, a);
+                atual = new Casa(0, i, j, 0, -1, 1);
             }
             else
             {
-                atual = new Casa(0, i, j, 0, -1, 0, a);
+                atual = new Casa(0, i, j, 0, -1, 0);
             }
             mapa[i][j] = atual;
         }
     }
 
     for(i = 0; i < n; i++)
-    {
-        for(j = 0; j < m; j++)
-            cout << mapa[i][j]->getCaractere();
-        cout << "\n";
-    }
-
-    for(i = 0; i < n; i++)
     for(j = 0; j < m; j++)
         mapa[i][j]->setDistanciaDest((mapa[i][j]->getI() - fim->getI())*(mapa[i][j]->getI() - fim->getI()) + (mapa[i][j]->getJ() - fim->getJ())*(mapa[i][j]->getJ() - fim->getJ()));
+}
 
+void processarDados()
+{
+    int i, j;
     for(i = 0; i < qtd_casas; i++)
     {
         if(casas[i]->getDistanciaDest() == 1)
@@ -97,28 +98,32 @@ int main()
         }
         atual->setProcessado(true);
     }
+}
 
+
+void imprimirDados()
+{
     cout << fim->getCusto() << "\n";
 
     Casa *atual = fim;
     do
     {
         if(atual->getCustoLocal())
-        {
             cout << atual->getI() << " " << atual->getJ() << "\n";
-            mapa[atual->getI()][atual->getJ()]->setCaractere('*');
-        }
-        else
-            mapa[atual->getI()][atual->getJ()]->setCaractere('_');
         atual = atual->getAnterior();
     } while(atual != 0);
+}
 
-    for(i = 0; i < n; i++)
-    {
-        for(j = 0; j < m; j++)
-            cout << mapa[i][j]->getCaractere();
-        cout << "\n";
-    }
+int main()
+{
+    freopen("entrada.in", "r", stdin);
+    freopen("berinjela.out", "w", stdout);
+
+    lerDados();
+
+    processarDados();
+
+    imprimirDados();
 
     return 0;
 }
