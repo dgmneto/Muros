@@ -117,10 +117,9 @@ void imprimirDados()
 
 int main()
 {
-    string nomeMapa, extencao = ".txt";
+    string nomeMapa;
     ifstream fileInput ("entrada.in");
     getline(fileInput, nomeMapa);
-    nomeMapa = nomeMapa + extencao;
     freopen(nomeMapa.c_str(), "r", stdin);
     freopen("berinjela.out", "w", stdout);
 
